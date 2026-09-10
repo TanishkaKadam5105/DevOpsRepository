@@ -1,2 +1,11 @@
+# Terraform generated files
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Node.js dependencies
 node_modules/
+
+# Salesforce generated files
 .sf/

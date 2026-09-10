@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QueueEase | Digital Queue Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                Q
+            </div>
+
+            <div>
+                <h2>QueueEase</h2>
+                <span>Smart Queue Management</span>
+            </div>
+
+        </div>
+
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <span>System Online</span>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                DIGITAL QUEUE MANAGEMENT SYSTEM
+            </div>
+
+            <h1>
+                Skip the Queue.<br>
+                <span>Save Your Time.</span>
+            </h1>
+
+            <p>
+                QueueEase helps users generate digital tokens and
+                monitor their position in the queue in real time.
+            </p>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="hero-icon">
+                🎫
+            </div>
+
+            <h3>Smart Token System</h3>
+
+            <p>
+                Generate your token digitally and avoid standing
+                in long physical queues.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Dashboard -->
+
+    <main class="dashboard">
+
+
+        <!-- Statistics -->
+
+        <section class="stats-section">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    🎟️
+                </div>
+
+                <div>
+
+                    <p>Current Token</p>
+
+                    <h2 id="currentToken">--</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    👥
+                </div>
+
+                <div>
+
+                    <p>People Waiting</p>
+
+                    <h2 id="waitingCount">--</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <div>
+
+                    <p>Your Position</p>
+
+                    <h2 id="userPosition">--</h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Main Content -->
+
+        <section class="content-grid">
+
+
+            <!-- Token Generator -->
+
+            <div class="card token-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="small-label">
+                            DIGITAL TOKEN
+                        </span>
+
+                        <h2>Get Your Token</h2>
+
+                        <p>
+                            Generate a token to join the queue.
+                        </p>
+
+                    </div>
+
+                    <div class="ticket-icon">
+                        🎫
+                    </div>
+
+                </div>
+
+
+                <div class="token-display">
+
+                    <p>Your Token Number</p>
+
+                    <h1 id="userToken">
+                        --
+                    </h1>
+
+                </div>
+
+
+                <button id="generateButton"
+                        onclick="generateToken()">
+
+                    <span>Generate New Token</span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <p id="message"
+                   class="message">
+                </p>
+
+            </div>
+
+
+            <!-- Queue Status -->
+
+            <div class="card queue-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="small-label">
+                            LIVE QUEUE
+                        </span>
+
+                        <h2>Queue Status</h2>
+
+                    </div>
+
+
+                    <button class="refresh-button"
+                            onclick="loadQueue()">
+
+                        ↻ Refresh
+
+                    </button>
+
+                </div>
+
+
+                <div class="current-token-box">
+
+                    <p>NOW SERVING</p>
+
+                    <h1 id="nowServing">
+                        --
+                    </h1>
+
+                </div>
+
+
+                <div class="queue-list-container">
+
+                    <div class="queue-title">
+
+                        <span>Waiting Tokens</span>
+
+                        <span id="queueCountBadge">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <div id="queueList"
+                         class="queue-list">
+
+                        <p class="empty-queue">
+                            Loading queue...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- How It Works -->
+
+        <section class="how-it-works">
+
+            <div class="section-heading">
+
+                <span>HOW QUEUEEASE WORKS</span>
+
+                <h2>
+                    Simple. Fast. Digital.
+                </h2>
+
+            </div>
+
+
+            <div class="steps">
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h3>Generate Token</h3>
+
+                    <p>
+                        Click the generate button to receive
+                        your digital queue number.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h3>Track Queue</h3>
+
+                    <p>
+                        Monitor the currently serving token
+                        and waiting queue.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h3>Save Time</h3>
+
+                    <p>
+                        Know your position without standing
+                        in a physical queue.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div>
+
+            <h3>QueueEase</h3>
+
+            <p>
+                Digital Token & Queue Management System
+            </p>
+
+        </div>
+
+
+        <p>
+            DevOps FA-1 Project
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
