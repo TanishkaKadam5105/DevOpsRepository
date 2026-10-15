@@ -1,0 +1,37 @@
+---
+- name: Configure Web Server
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Deploy custom web page
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>DevOps Assignment 5</title>
+          </head>
+          <body>
+              <h1>DevOps Assignment 5</h1>
+              <h2>AWS EC2 + Ansible Automation</h2>
+              <p>Web server configured successfully using Ansible.</p>
+              <p>Server automated using an Ansible playbook.</p>
+          </body>
+          </html>
+        owner: root
+        group: root
+        mode: '0644'
