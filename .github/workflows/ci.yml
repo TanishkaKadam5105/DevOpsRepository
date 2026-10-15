@@ -1,5 +1,5 @@
 
-name: QueueEase CI
+name: QueueEase CI/CD
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  test-and-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,8 +20,14 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Run automated tests
         run: npm test
+
+      - name: Build backend Docker image
+        run: docker build -t queueease-backend:latest ./queueease/docker/backend
+
+      - name: Build frontend Docker image
+        run: docker build -t queueease-frontend:latest ./queueease/docker/frontend
