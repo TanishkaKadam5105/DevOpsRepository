@@ -1,4 +1,3 @@
-
 def greet():
     return "Hello from Jenkins CI!"
 
