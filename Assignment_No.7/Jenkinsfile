@@ -1,0 +1,30 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+                sh 'git log -1 --oneline'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('Assignment-7') {
+                    sh 'python3 -m py_compile app.py test_app.py'
+                    sh 'python3 app.py'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir('Assignment-7') {
+                    sh 'python3 test_app.py'
+                }
+            }
+        }
+    }
+}
